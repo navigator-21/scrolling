@@ -1,0 +1,44 @@
+
+<div class="item-b__actions-list">  
+  <a href="#about_plise" class="item-b__actions-link scrollto">О нас</a>
+  <a href="#reviews_plise" class="item-b__actions-link scrollto">Отзывы</a>
+</div>
+
+
+<script>
+	$(document).ready(function() {		
+		// smooth scroll to the selected element
+	 	$(".catalog_det_cat_reg_bl").on( "click", ".scrollto", {top:50,duration:1000,}, goScrolling);
+		 
+		function goScrolling (event = {}) {
+			event.preventDefault();				
+			let telement,top,duration,easin;
+			if(typeof event.data.element != "undefined"){
+				element = $(event.data.element);
+			}else{
+				element = $($(this).attr("href"));
+			}
+			if(typeof event.data.top != "undefined"){
+				top = parseInt(event.data.top, 10);
+			}else{
+				top = 150;
+			}
+			if(typeof event.data.duration != "undefined"){
+				duration = parseInt(event.data.duration, 10);
+			}else{
+				duration = 750;
+			}
+			if(typeof event.data.easing != "undefined"){
+				easing = event.data.easing;
+			}else{
+				easing = "swing";
+			}				
+			$("html, body").stop().animate({
+				scrollTop: (element.offset().top - top) + "px",
+			}, {
+				duration: duration,
+				easing: easin,
+			});
+		}	 
+	});
+</script>
